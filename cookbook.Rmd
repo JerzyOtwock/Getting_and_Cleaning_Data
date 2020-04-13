@@ -1,0 +1,37 @@
+---
+title: "Cookbook"
+author: "Jerzy"
+date: "13 04 2020"
+output: html_document
+---
+#### Dataset Information
+
+A group of 30 volunteers performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone. We captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz.
+
+*****
+#### Data Manipulation Details
+
+
+The run_analysis.R script cleans the activity data.
+Steps:
+
+0. Read the dataset
+1. Merges the training and the test sets to create one single data set.
+
+`10299 x 563 data frame`
+       
+2. Extracts only the measurements on the mean and standard deviation for each measurement.
+
+`10299 x 88 data frame`
+
+3. Uses descriptive activity names to name the activities in the data set
+
+`converted activity id to {WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING}`
+
+4. Appropriately labels the data set with descriptive variable names.
+
+`skipped`
+
+5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+ `180 x 89 data frame in output.txt`
