@@ -39,13 +39,22 @@ df_filterd <- df %>%
 
 df_rename <- df_filterd
 df_rename <- merge(df_rename , activitiesMap, by = "ActivityId" )
-
+df_rename$ActivityId <- NULL
 #### question 5
 
 df_5 <- df_rename %>% arrange(Subject , Activity)
 df_5 <- data.table(df_5)
+
+df_6a <- df_5[,lapply(.SD, mean, na.rm=TRUE), by = .(Subject, Activity) ]
+
+df_6b <- df_5 %>% group_by(Subject, Activity) %>% summarise_all(mean, na.rm = TRUE)
+
 df_6 <-  aggregate(x = df_5 ,               
           by = list(df_5$Subject   , df_5$Activity),           
-          FUN = mean)                          
+          FUN = mean)    
+df_6 <-  df_6 %>% select( -Group.1, )
+rename()
+# df_6$Group.2 <- NULL
+setdiff(df_6b , df_6)
 
 write.table(df_6, 'output.txt', row.names = F)
